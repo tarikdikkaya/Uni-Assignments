@@ -6,7 +6,7 @@ int gcd(int x, int y){
 	if (y>x){
 		holder = y;
 		y = x;
-		x = cache;
+		x = holder;
 		
 	}
 	
@@ -22,11 +22,13 @@ int gcd(int x, int y){
 
 int main(){
 	int a,b;
-	printf("Enter the numbers you want to calculate their GCD of: ");
-	scanf("%d", &a);
-	printf("\nEnter the second number:");
-	scanf("%d",&b);
+	printf("Enter the positive integers you want to calculate their GCD of: ");
+	scanf("%d %d", &a,&b);
 	
+	if (a<=0 || b <=0){
+		printf("One or two of the integers you have given is not positive.");
+		return 0;
+	}
 	printf("GCD of %d and %d is: %d", a, b, gcd(a,b));
 	
 	return 0;
