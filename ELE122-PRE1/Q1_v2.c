@@ -4,28 +4,26 @@
 int mysqrt(int x){
 	clock_t begin = clock();
 	double precision = 0.01;
-	double num;
-	
+	double num,holder;
+
 	num = x/2;
-	
-	if ( num*num >= x + precision ){
-		while(num*num >= x + precision)
-			num = num - precision;
+	while (num*num > x + precision || num*num < x - precision ){
+		if (num*num >= x + precision){
+				holder = num;
+				num = num/2;
+		}
+		else 
+			num = (holder + num)/2;	
 	}
-	else {
-	while(num*num <= x - precision)
-		num = num + precision;
-	}
-		
 	if (num - (int)num < 0.5)
 		num = (int)num;
 	else
 		num = (int)num + 1;
+			
 	clock_t end = clock();
 	double time_spent = (double)(end - begin);
 	printf("\nExecution time: %f",time_spent/1000);
-	
-	return (int)num;
+	return num;
 	}
 	
 int main(int num){
