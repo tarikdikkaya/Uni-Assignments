@@ -7,22 +7,23 @@ void Hunerler(float itemPrice, float *donationTotal, float *profitTotal);
 int main(void)
 {
     // declaring variables
-    int i, randnum;
+    int i;
     float price, d_total, p_total;
     for (i = 0; i < 50; i++)
     {
-        // setting a seed to generate different numbers when program re-executed (also in every iteration)
-        srand(time(NULL) + i);
-        randnum = rand() % 21;
+        /* setting and changing the seed for every
+		iteration and program execution using time */
+        srand(time(NULL) + 100 * i);
 
-        // squeezing the generated number between 0 and 20
-        (randnum != 20) ? (price = rand() % 20 + (double)(rand() % 100) / 100) : (price = rand() % 20);
+        // generating a random floating number between 0 and 20
+        price = (double)(rand() % 2000) / 100;
         printf("Item is: $%.2f\n", price);
 
-        // calling function Hunerler to do the trick
+        // calling function Hunerler
         Hunerler(price, &d_total, &p_total);
     }
     printf("Donation is: $%.2f\nProfit is: $%.2f\n", d_total, p_total);
+    system("pause");
 }
 
 void Hunerler(float itemPrice, float *donationTotal, float *profitTotal)
@@ -33,6 +34,8 @@ void Hunerler(float itemPrice, float *donationTotal, float *profitTotal)
     // dividing the number to whole and fractional part
     whole = (int)(itemPrice);
     fraction = itemPrice - whole;
+    
+    // adding those parts to the necessary variables
     *donationTotal += fraction;
     *profitTotal += whole;
 }

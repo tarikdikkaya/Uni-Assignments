@@ -8,11 +8,14 @@ int main(void)
 	int i;
 	for (i = 0; i < 50; i++)
 	{
-		// setting a seed to generate different numbers when program re-executed (also in every iteration)
-		srand(time(NULL) + i);
-		// generating the whole and fractional part of the floating number
-		aRandomNumber = rand() % 20 + (double)(rand() % 100) / 100;
+		/* setting and changing the seed for every
+		iteration and program execution using time */
+		srand(time(NULL) + 100 * i);
+		
+		// generating a random floating number between 0 and 20
+		aRandomNumber = (double)(rand() % 2000) / 100;
 		printf("%.2f\n", aRandomNumber);
 	}
+	system("pause");
 	return 0;
 } /* end function main */
