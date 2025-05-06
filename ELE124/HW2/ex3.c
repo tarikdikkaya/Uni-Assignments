@@ -10,7 +10,7 @@ int main(void)
     int i, randnum;
     float price, d_total, p_total;
     // opening a file named "donations.txt"
-    FILE *out = fopen("donations.txt", "w");
+    FILE *out = fopen("donations.txt", "a");
 
     for (i = 0; i < 50; i++)
     {
@@ -29,7 +29,7 @@ int main(void)
         fprintf(out, "Item is: $%.2f\n", price);
     }
     printf("Donation is: $%.2f\nProfit is: $%.2f\n", d_total, p_total);
-    fprintf(out, "Donation is: $%.2f\nProfit is: $%.2f\n", d_total, p_total);
+    fprintf(out, "Donation is: $%.2f\nProfit is: $  %.2f\n", d_total, p_total);
 
     // closing the file
     fclose(out);
