@@ -1,7 +1,7 @@
 #include <stdio.h>
 int newArrayMultiplied(int arr[], int size);
 int main(){
-    int i=0,j=0,temp = 0,len=0, current = 0,count = 1, maxCount = 0;
+    int i=0,j=0,temp = 0,len=0;
     puts("Length of the array:");
     scanf("%d", &len);
     int arr[len];
@@ -28,7 +28,7 @@ int newArrayMultiplied(int arr[], int size){
         else 
             a[i] = arr[i-1]*arr[i+1];
     }
-    
+
     for (i=0;i<size;i++)
         printf("%d " , a[i]);
 
